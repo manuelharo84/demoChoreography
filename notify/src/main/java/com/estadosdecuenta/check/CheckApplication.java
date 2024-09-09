@@ -32,6 +32,7 @@ public class CheckApplication {
 
 			System.out.println(" [x] Received '" + message + "'");
 			try {
+				doWork(message);
 				message = "Notified "+message;
 			} catch (InterruptedException e) {
 				e.printStackTrace();
