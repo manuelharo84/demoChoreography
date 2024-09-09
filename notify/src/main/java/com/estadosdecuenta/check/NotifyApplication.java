@@ -11,14 +11,12 @@ import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
 
 @SpringBootApplication
-public class CheckApplication {
+public class NotifyApplication {
 
-	private final static String TASK_QUEUE_NAME = "make";
-
-	private final static String TASK_QUEUE_NAME_MAKE = "notify";
+	private final static String TASK_QUEUE_NAME = "notify";
 
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(CheckApplication.class, args);
+		SpringApplication.run(NotifyApplication.class, args);
 
 		ConnectionFactory factory = new ConnectionFactory();
 		factory.setHost("rabbitmq");
@@ -35,8 +33,7 @@ public class CheckApplication {
 			System.out.println(" [x] Received '" + message + "'");
 			try {
 				doWork(message);
-				message = "Done "+message;
-				makePdfQueue(message, channel);
+				message = "Notified "+message;
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			} finally {
@@ -55,11 +52,4 @@ public class CheckApplication {
 				Thread.sleep(2000);
 		}
 	}
-
-	public static void makePdfQueue(String message, Channel channel) throws IOException {
-		channel.queueDeclare(TASK_QUEUE_NAME_MAKE, false, false, false, null);
-		channel.basicPublish("", TASK_QUEUE_NAME_MAKE, null, message.getBytes());
-		System.out.println(" [x] Sent '" + message + "'");
-	}
-
 }
