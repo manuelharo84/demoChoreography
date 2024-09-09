@@ -28,15 +28,15 @@ public class IngestionApplication {
 				Channel channel = connection.createChannel()) {
 			channel.queueDeclare(TASK_QUEUE_NAME, false, false, false, null);
 
-			for (int i = 1; i < 10; i++) {
-				String message = "Hola Mundo" + i;
+			for (int i = 1; i < 100; i++) {
+				String message = "Movimientos de cuenta" + i;
 				channel.basicPublish("", TASK_QUEUE_NAME, null, message.getBytes());
 				System.out.println(" [x] Sent '" + message + "'");
 
 			}
 		}
 
-		return "Hello Docker World";
+		return "Datos enviados al broker de mensajes";
 	}
 
 	public static void main(String[] args) {

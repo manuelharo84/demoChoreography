@@ -35,7 +35,7 @@ public class CheckApplication {
 			System.out.println(" [x] Received '" + message + "'");
 			try {
 				doWork(message);
-				message = "Check "+message;
+				message = "Done "+message;
 				makePdfQueue(message, channel);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
