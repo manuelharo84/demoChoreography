@@ -29,3 +29,21 @@ services:
       rabbitmq:
         condition: service_healthy
     restart: always
+  webmake:
+    image: make
+    container_name: make
+    ports:
+      - "8003:8080"
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    restart: always
+  webnotify:
+    image: notify
+    container_name: notify
+    ports:
+      - "8003:8080"
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    restart: always
