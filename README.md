@@ -13,7 +13,7 @@ Para ejecutar el demo se debe realizar los siguientes pasos
     <p>docker compose up</p>
 
 Para disparar los mensajes a la cola ingresar a este link, cambiando la ip que corresponda
-<p><a>"http://192.168.1.60:8001/"</a></p>
+<p><a href="http://192.168.1.60:8001/">http://192.168.1.60:8001/</a></p>
 
 Para monitorear RabbitMQ ingresar al sigiuente link, igualmente cambiando la ip que corresponda
-<p><a>http://192.168.1.60:15672/ </a></p>
+<p><a href="http://192.168.1.60:15672/">http://192.168.1.60:15672/</a></p>
